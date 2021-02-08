@@ -1,0 +1,18 @@
+Format & File:
+Blender (.blend)
+
+Exported
+Alembic (.abc)
+3D Studio (.3ds)
+Autodesk FBX (.fbx)
+Wavefront OBJ (.obj, .mtl)
+Stereolithography (.stl)
+Collada (.dae)
+GLB file (.glb)
+glTF 2.0 file (.gltf)
+
+---------------------------------------------------------------------------------------------------
+Specifications:
+Geometry: Polygon mesh/Subdivision-ready/Subdivision
+Unwrapped UVs:	Mixed/Unknown
+Renderer: Cycles
