@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="refresh" content="0; url=https://cg3d.org">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="day-prompt" content="days ago">
+<meta name="hour-prompt" content="hours ago">
+<meta name="minute-prompt" content="minutes ago">
+<meta name="justnow-prompt" content="just now">
+<title>Error: 404 - Page not found</title>
+<meta itemprop="description" name="description" content="{% if page.description %}{{ page.description | truncate: 160 }}{% else %}{{ site.description | truncate: 160  }}{% endif %}" />
+<meta property="og:locale" content="en">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{%if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+<meta property="og:url" content="https://cg3d.org">
+<meta property="og:site_name" content="CG 3D">
+<meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+<link rel="canonical" href="https://cg3d.org">
+<link rel="apple-touch-icon" sizes="180x180" href="https://cg3d.org/assets/images/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://cg3d.org/assets/images/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://cg3d.org/assets/images/favicons/favicon-16x16.png">
+<link rel="shortcut icon" href="https://cg3d.org/assets/images/favicons/favicon.png" type="image/x-icon">
+<link href="https://cg3d.org/assets/images/favicons/favicon-192x192.png" height="192" rel="icon" sizes="192x192"/>
+<meta content="https://cg3d.org/assets/images/favicons/favicon-144x144.png" height="144" name="msapplication-TileImage"/>
+<link rel="manifest" href="https://cg3d.org/assets/images/favicons/site.webmanifest">
+<link rel="shortcut icon" href="https://cg3d.org/assets/images/favicons/favicon.ico">
+<meta name="apple-mobile-web-app-title" content="CG 3D">
+<meta name="application-name" content="CG 3D">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-config" content="https://cg3d.org/assets/images/favicons/browserconfig.xml">
+<meta name="theme-color" content="#f1f1f1">
+<link rel="stylesheet" href="https://cg3d.org/assets/bootstrap.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css">
+<script>
+if(self.location==top.location) top.location.replace('https://cg3d.org');
+</script>
+</head>
+<body>
+<!-- Navbar (sit on top) -->
+<div class="top">
+  <div class="bar" id="myNavbar">
+    <a class="bar-item button hover-black hide-medium hide-large right" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <a href="https://cg3d.org" class="bar-item button"><b>CG 3D</b></a>
+    <a href="https://cg3d.org/license" class="bar-item button hide-small">License</a>
+    <a href="https://cg3d.org/support" class="bar-item button hide-small">Support</a>
+    <a class="bar-item button hide-small right hover-red" onclick="document.getElementById('searchModal').style.display='block'">
+      <i class="fa fa-search"></i>
+    </a>
+  </div>
+  <!-- Navbar on small screens -->
+  <div id="navBar" class="bar-block white hide hide-large hide-medium">
+    <a href="https://cg3d.org/license" class="bar-item button" onclick="toggleFunction()">License</a>
+    <a href="https://cg3d.org/support" class="bar-item button" onclick="toggleFunction()">Support</a>
+    <a class="bar-item button" onclick="document.getElementById('searchModal').style.display='block'">Search</a>
+  </div>
+</div>
+<div class="page-container">
+<div style="text-align: center;">
+{{ content }}
+</div>
+</div>
+  <!-- Search Modal -->
+  <div id="searchModal" class="modal">
+    <div class="modal-content animate-top card-4">
+      <header class="container bg-color center padding-32"> 
+        <span onclick="document.getElementById('searchModal').style.display='none'" 
+       class="button bg-color xlarge display-topright">×</span>
+        <h2 class="wide"><i class="fa fa-search margin-right"></i>Search</h2>
+      </header>
+      <div class="container">
+        <div id="search-container">
+        <input type="text" id="search-input" placeholder="Search 3D Models...">
+        </div>
+        <div class="column">
+        <div id="results-container" class="page-card">
+        <!-- Search results here -->
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- End Page Content -->
+<script src="https://cg3d.org/assets/slideshow.js"></script>
+<script src="https://cg3d.org/assets/navbar.js"></script>
+<script src="https://cg3d.org/assets/search.min.js"></script>
+<script>
+   window.simpleJekyllSearch = new SimpleJekyllSearch({
+     searchInput: document.getElementById('search-input'),
+     resultsContainer: document.getElementById('results-container'),
+     json: 'https://cg3d.org/search.json',
+     searchResultTemplate: '<div class="card" style="box-shadow:0 1px 2px 0 #999;text-align:center;"><a href="https://cg3d.org{url}" alt="Free 3D {title} Models" title="Free 3D {title} Models"><img style="border-radius: 5px 5px 0 0; width: 100%;" src="https://cg3d.org/assets/images{url}.jpg" alt="Free 3D {title} Models" title="Free 3D {title} Models"><h6 style="padding:0px 10px 10px 10px;">{title}</h6></a></div>',
+     noResultsText: 'No results found',
+     limit: 10,
+     fuzzy: false,
+     exclude: ['Welcome']
+      })
+</script>
+</body>
+</html>
