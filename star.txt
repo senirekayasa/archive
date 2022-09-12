@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Dark Mode Switcher For Bootstrap 5 Example</title>
+<link href="https://www.cssscript.com/demo/sticky.css" rel="stylesheet" type="text/css"/>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"/>
+
+<style>
+
+.disabled { cursor: not-allowed; }
+
+[data-theme="dark"] { background-color: #111 !important; color: #fff; }
+
+[data-theme="dark"] a { color: #fff; }
+[data-theme="dark"] a:hover { color: #eee; }
+
+[data-theme="dark"] .text-dark { color: #fff !important; }
+
+/* BUTTONS */
+
+[data-theme="dark"] .btn-link { color: #fff; }
+[data-theme="dark"] .btn-close { filter: invert(1) grayscale(100%) brightness(200%); }
+
+[data-theme="dark"] .btn-dark { color: #000; background-color: #f8f9fa; border-color: #f8f9fa; }
+[data-theme="dark"] .btn-dark:hover { color: #000; background-color: #f9fafb; border-color: #f9fafb; }
+[data-theme="dark"] .btn-check:focus + .btn-dark,
+[data-theme="dark"] .btn-dark:focus { color: #000; background-color: #f9fafb; border-color: #f9fafb; box-shadow: 0 0 0 0.25rem rgba(211, 212, 213, 0.5); }
+[data-theme="dark"] .btn-check:checked + .btn-dark,
+[data-theme="dark"] .btn-check:active + .btn-dark,
+[data-theme="dark"] .btn-dark:active,
+[data-theme="dark"] .btn-dark.active,
+[data-theme="dark"] .show > .btn-dark.dropdown-toggle { color: #000; background-color: #f9fafb; border-color: #f9fafb; }
+[data-theme="dark"] .btn-check:checked + .btn-dark:focus,
+[data-theme="dark"] .btn-check:active + .btn-dark:focus,
+[data-theme="dark"] .btn-dark:active:focus,
+[data-theme="dark"] .btn-dark.active:focus,
+[data-theme="dark"] .show > .btn-dark.dropdown-toggle:focus { box-shadow: 0 0 0 0.25rem rgba(211, 212, 213, 0.5); }
+[data-theme="dark"] .btn-dark:disabled,
+[data-theme="dark"] .btn-dark.disabled { color: #000; background-color: #f8f9fa; border-color: #f8f9fa; }
+
+[data-theme="dark"] .btn-light { color: #fff; background-color: #212529; border-color: #212529; }
+[data-theme="dark"] .btn-light:hover { color: #fff; background-color: #1c1f23; border-color: #1a1e21; }
+[data-theme="dark"] .btn-check:focus + .btn-light,
+[data-theme="dark"] .btn-light:focus { color: #fff; background-color: #1c1f23; border-color: #1a1e21; box-shadow: 0 0 0 0.25rem rgba(66, 70, 73, 0.5); }
+[data-theme="dark"] .btn-check:checked + .btn-light,
+[data-theme="dark"] .btn-check:active + .btn-light,
+[data-theme="dark"] .btn-light:active,
+[data-theme="dark"] .btn-light.active,
+[data-theme="dark"] .show > .btn-light.dropdown-toggle { color: #fff; background-color: #1a1e21; border-color: #191c1f; }
+[data-theme="dark"] .btn-check:checked + .btn-light:focus,
+[data-theme="dark"] .btn-check:active + .btn-light:focus,
+[data-theme="dark"] .btn-light:active:focus,
+[data-theme="dark"] .btn-light.active:focus,
+[data-theme="dark"] .show > .btn-light.dropdown-toggle:focus { box-shadow: 0 0 0 0.25rem rgba(66, 70, 73, 0.5); }
+[data-theme="dark"] .btn-light:disabled,
+[data-theme="dark"] .btn-light.disabled { color: #fff; background-color: #212529; border-color: #212529; }
+
+[data-theme="dark"] .btn-outline-dark { color: #f8f9fa; border-color: #f8f9fa; }
+[data-theme="dark"] .btn-outline-dark:hover { color: #000; background-color: #f8f9fa; border-color: #f8f9fa; }
+[data-theme="dark"] .btn-check:focus + .btn-outline-dark,
+[data-theme="dark"] .btn-outline-dark:focus { box-shadow: 0 0 0 0.25rem rgba(248, 249, 250, 0.5); }
+[data-theme="dark"] .btn-check:checked + .btn-outline-dark,
+[data-theme="dark"] .btn-check:active + .btn-outline-dark,
+[data-theme="dark"] .btn-outline-dark:active,
+[data-theme="dark"] .btn-outline-dark.active,
+[data-theme="dark"] .btn-outline-dark.dropdown-toggle.show { color: #000; background-color: #f8f9fa; border-color: #f8f9fa; }
+[data-theme="dark"] .btn-check:checked + .btn-outline-dark:focus,
+[data-theme="dark"] .btn-check:active + .btn-outline-dark:focus,
+[data-theme="dark"] .btn-outline-dark:active:focus,
+[data-theme="dark"] .btn-outline-dark.active:focus,
+[data-theme="dark"] .btn-outline-dark.dropdown-toggle.show:focus { box-shadow: 0 0 0 0.25rem rgba(248, 249, 250, 0.5); }
+[data-theme="dark"] .btn-outline-dark:disabled,
+[data-theme="dark"] .btn-outline-dark.disabled { color: #f8f9fa; background-color: transparent; }
+
+[data-theme="dark"] .btn-outline-light { color: #212529; border-color: #212529; }
+[data-theme="dark"] .btn-outline-light:hover { color: #fff; background-color: #212529; border-color: #212529; }
+[data-theme="dark"] .btn-check:focus + .btn-outline-light,
+[data-theme="dark"] .btn-outline-light:focus { box-shadow: 0 0 0 0.25rem rgba(33, 37, 41, 0.5); }
+[data-theme="dark"] .btn-check:checked + .btn-outline-light,
+[data-theme="dark"] .btn-check:active + .btn-outline-light,
+[data-theme="dark"] .btn-outline-light:active,
+[data-theme="dark"] .btn-outline-light.active,
+[data-theme="dark"] .btn-outline-light.dropdown-toggle.show { color: #fff; background-color: #212529; border-color: #212529; }
+[data-theme="dark"] .btn-check:checked + .btn-outline-light:focus,
+[data-theme="dark"] .btn-check:active + .btn-outline-light:focus,
+[data-theme="dark"] .btn-outline-light:active:focus,
+[data-theme="dark"] .btn-outline-light.active:focus,
+[data-theme="dark"] .btn-outline-light.dropdown-toggle.show:focus { box-shadow: 0 0 0 0.25rem rgba(33, 37, 41, 0.5); }
+[data-theme="dark"] .btn-outline-light:disabled,
+[data-theme="dark"] .btn-outline-light.disabled { color: #212529; background-color: transparent; }
+
+/* DROPDOWNS */
+
+[data-theme="dark"] .dropdown-menu { color: #dee2e6; background-color: #343a40; border-color: rgba(0, 0, 0, 0.15); }
+[data-theme="dark"] .dropdown-menu .dropdown-item { color: #dee2e6; }
+[data-theme="dark"] .dropdown-menu .dropdown-item:hover,
+[data-theme="dark"] .dropdown-menu .dropdown-item:focus { color: #fff; background-color: rgba(255, 255, 255, 0.15); }
+[data-theme="dark"] .dropdown-menu .dropdown-item.active,
+[data-theme="dark"] .dropdown-menu .dropdown-item:active { color: #fff; background-color: #0d6efd; }
+[data-theme="dark"] .dropdown-menu .dropdown-item.disabled,
+[data-theme="dark"] .dropdown-menu .dropdown-item:disabled { color: #adb5bd; }
+[data-theme="dark"] .dropdown-menu .dropdown-divider { border-color: rgba(0, 0, 0, 0.15); }
+[data-theme="dark"] .dropdown-menu .dropdown-item-text { color: #dee2e6; }
+[data-theme="dark"] .dropdown-menu .dropdown-header { color: #adb5bd; }
+
+/* LIST GROUPS */
+
+[data-theme="dark"] .list-group-item-action { color: #fff; }
+[data-theme="dark"] .list-group-item-action:hover,
+[data-theme="dark"] .list-group-item-action:focus { color: #fff; background-color: #333; }
+[data-theme="dark"] .list-group-item-action:active { color: #212529; background-color: #e9ecef; }
+[data-theme="dark"] .list-group-item { background-color: #111; border: 1px solid #333; }
+[data-theme="dark"] .list-group-item:not(:first-child) { border-top: none; }
+[data-theme="dark"] .list-group-item.disabled,
+[data-theme="dark"] .list-group-item:disabled { color: #fff; background-color: #000; }
+[data-theme="dark"] .list-group-item.active { color: #fff; background-color: #0d6efd; border-color: #0d6efd; }
+
+/* TABS */
+
+[data-theme="dark"] .nav-tabs { border-bottom: 1px solid #000; }
+[data-theme="dark"] .nav-tabs .nav-link:hover,
+[data-theme="dark"].nav-tabs .nav-link:focus { border-color: #212529 #212529 #000; }
+[data-theme="dark"] .nav-tabs .nav-link.disabled { color: #333; }
+[data-theme="dark"] .nav-tabs .nav-link.active,
+[data-theme="dark"] .nav-tabs .nav-item.show .nav-link { color: #fff; background-color: #000; border-color: #212529 #212529 #000; }
+
+/* PAGINATION */
+
+[data-theme="dark"] .page-link { color: #fff; background-color: #111; border: 1px solid #333; }
+[data-theme="dark"] .page-link:hover { color: #fff; background-color: #333; border-color: #333; }
+[data-theme="dark"] .page-link:focus { color: #fff; background-color: #000; }
+[data-theme="dark"] .page-item.active .page-link { color: #fff; background-color: #0d6efd; border-color: #0d6efd; }
+[data-theme="dark"] .page-item.disabled .page-link { color: #fff; background-color: #000; border-color: #333; }
+
+/* BACKGROUNDS */
+
+[data-theme="dark"] .bg-light { background-color: #212529 !important; }
+[data-theme="dark"] .bg-dark { background-color: #f8f9fa !important; }
+[data-theme="dark"] .bg-white { background-color: #000 !important; }
+
+[data-theme="dark"] .bg-white.text-white,
+[data-theme="dark"] .bg-dark.text-white,
+[data-theme="dark"] .bg-warning.text-dark,
+[data-theme="dark"] .bg-info.text-dark { color: #212529 !important; }
+
+/* BORDERS */
+
+[data-theme="dark"] .border,
+[data-theme="dark"] .border-top,
+[data-theme="dark"] .border-end,
+[data-theme="dark"] .border-bottom,
+[data-theme="dark"] .border-start { border-color: #212529 !important; }
+
+/* BREADCRUMB */
+
+[data-theme="dark"] .breadcrumb.border { border-color: #333 !important; }
+
+/* SHADOWS */
+
+[data-theme="dark"] .shadow { box-shadow: 0 0.5rem 1rem rgba(255, 255, 255, 0.15) !important; }
+[data-theme="dark"] .shadow-sm { box-shadow: 0 0.125rem 0.25rem rgba(255, 255, 255, 0.075) !important; }
+[data-theme="dark"] .shadow-lg { box-shadow: 0 1rem 3rem rgba(255, 255, 255, 0.175) !important; }
+
+/* CARDS */
+
+[data-theme="dark"] .card { background-color: #000; border: 1px solid rgba(255, 255, 255, 0.125); }
+
+/* MODALS */
+
+[data-theme="dark"] .modal-content { background-color: #000; border: 1px solid rgba(255, 255, 255, 0.2); }
+[data-theme="dark"] .modal-header { border-bottom: 1px solid #212529; }
+[data-theme="dark"] .modal-footer { border-top: 1px solid #212529; }
+
+[data-theme="dark"] .modal-backdrop.show { opacity: 0.75; }
+
+/* ACCORDIONS */
+
+[data-theme="dark"] .accordion:not(.accordion-flush) { border-top: 1px solid #333; border-top-left-radius: 0.25rem !important; border-top-right-radius: 0.25rem !important; }
+[data-theme="dark"] .accordion-button { color: #fff; background-color: #000; border: 1px solid #333; border-top: none; }
+[data-theme="dark"] .accordion-button:not(.collapsed) { color: #fff; background-color: #111; border-bottom: none; }
+[data-theme="dark"] .accordion-button::after { filter: invert(1) grayscale(100%) brightness(200%); }
+[data-theme="dark"] .accordion-collapse { border: 1px solid #333; }
+
+[data-theme="dark"] .accordion-flush .accordion-button { border-right: 0; border-left: 0; border-radius: 0; }
+[data-theme="dark"] .accordion-flush .accordion-collapse { border-width: 0; }
+[data-theme="dark"] .accordion-flush .accordion-item:first-of-type .accordion-button { border-top-width: 0; border-top-left-radius: 0; border-top-right-radius: 0; }
+[data-theme="dark"] .accordion-flush .accordion-item:last-of-type .accordion-button.collapsed { border-bottom-width: 0; border-bottom-right-radius: 0; border-bottom-left-radius: 0; }
+
+/* PROGRESS BARS */
+
+[data-theme="dark"] .progress { background-color: #333; }
+
+/* FORMS */
+
+[data-theme="dark"] .form-control::-webkit-input-placeholder,
+[data-theme="dark"] .form-control::-moz-placeholder,
+[data-theme="dark"] .form-control::placeholder { color: #ccc; }
+
+[data-theme="dark"] .form-control-plaintext { color: #ccc; }
+
+[data-theme="dark"] .form-control { color: #fff; background-color: #333; border: 1px solid #111; }
+
+[data-theme="dark"] .form-select { color: #fff; border-color: #111 !important; background: #333 url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23ffffff' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 0.75rem center/8px 10px; border: 1px solid #111; }
+
+[data-theme="dark"] .form-select:focus { border-color: #dc3545; box-shadow: 0 0 0 0.2rem #dc3545; background-color: rgba(255,0,0,0.1); }
+
+[data-theme="dark"] .form-select:focus::-ms-value { color: #495057; background-color: #fff; }
+
+[data-theme="dark"] .form-select option { color: #000; }
+
+[data-theme="dark"] .form-select:disabled { color: #6c757d; background-color: #e9ecef; }
+
+[data-theme="dark"] .form-select:-moz-focusring { text-shadow: 0 0 0 #495057; }
+
+</style>
+</head>
+<body class="bg-light" style="padding-bottom:10rem;">
+<div class="container">
+
+<div class="row g-0 justify-content-between align-items-center shadow p-3 mb-5">
+
+<div class="col-auto">
+<img class="img-fluid" id="logo" src="dark.png"/>
+</div>
+
+<div class="col-auto text-end">
+
+</div>
+
+</div>
+<h1 class="text-center">Dark Mode Switcher For Bootstrap 5 Example</h1><span class="ezoic-autoinsert-ad ezoic-top_of_page"></span><span style="clear:both; display:block" id="ez-clearholder-box-2"></span><span class="ezoic-ad ezoic-at-0 box-2 box-2220 adtester-container adtester-container-220" data-ez-name="cssscript_com-box-2"><span id="div-gpt-ad-cssscript_com-box-2-0" ezaw="250" ezah="250" style="position:relative;z-index:0;display:inline-block;padding:0;min-height:250px;min-width:250px;" class="ezoic-ad"><script data-ezscrex="false" data-cfasync="false" type="text/javascript" style="display:none;">if(typeof ez_ad_units != 'undefined'){ez_ad_units.push([[250,250],'cssscript_com-box-2','ezslot_0',220,'0','0'])};if(typeof __ez_fad_position != 'undefined'){__ez_fad_position('div-gpt-ad-cssscript_com-box-2-0')};</script></span></span>
+ <div align="center" style="margin:30px auto"><div id="carbon-block"></div>
+    <div id="ezwrap_adsense_responsive_full_0"></div></div>
+<p class="text-center"><a href="#0">Hyperlink</a></p>
+
+<div class="row mb-5">
+<div class="col p-3 bg-primary text-white">.bg-primary</div>
+<div class="col p-3 bg-secondary text-white">.bg-secondary</div>
+<div class="col p-3 bg-success text-white">.bg-success</div>
+<div class="col p-3 bg-danger text-white">.bg-danger</div>
+<div class="col p-3 bg-warning text-dark">.bg-warning</div>
+<div class="col p-3 bg-info text-dark">.bg-info</div>
+<div class="w-100 my-2"></div>
+<div class="col p-3 bg-light text-dark">.bg-light</div>
+<div class="col p-3 bg-dark text-white">.bg-dark</div>
+<div class="col p-3 bg-white text-dark">.bg-white</div>
+<div class="col p-3 bg-transparent">.bg-transparent</div>
+</div>
+
+
+<div class="row mb-5">
+<div class="col"><div class="alert alert-primary" role="alert">A simple primary alert</div></div>
+<div class="col"><div class="alert alert-secondary" role="alert">A simple secondary alert</div></div>
+<div class="col"><div class="alert alert-success" role="alert">A simple success alert</div></div>
+<div class="col"><div class="alert alert-danger" role="alert">A simple danger alert</div></div>
+<div class="w-100"></div>
+<div class="col"><div class="alert alert-warning" role="alert">A simple warning alert</div></div>
+<div class="col"><div class="alert alert-info" role="alert">A simple info alert</div></div>
+<div class="col"><div class="alert alert-light border" role="alert">A simple light alert</div></div>
+<div class="col"><div class="alert alert-dark" role="alert">A simple dark alert</div></div>
+</div>
+
+
+
+<nav style="--bs-breadcrumb-divider: &#39;&gt;&#39;;" class="mb-3">
+  <ol class="breadcrumb border bg-light rounded p-1">
+    <li class="breadcrumb-item active" aria-current="page">Home</li>
+  </ol>
+</nav>
+
+<nav style="--bs-breadcrumb-divider: &#39;&gt;&#39;;" class="mb-3">
+  <ol class="breadcrumb border bg-light rounded p-2 justify-content-center">
+    <li class="breadcrumb-item"><a href="#">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Library</li>
+  </ol>
+</nav>
+
+<nav style="--bs-breadcrumb-divider: &#39;&gt;&#39;;" class="mb-5">
+  <ol class="breadcrumb border bg-light rounded p-3 justify-content-end">
+    <li class="breadcrumb-item"><a href="#">Home</a></li>
+    <li class="breadcrumb-item"><a href="#">Library</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Data</li>
+  </ol>
+</nav>
+
+
+<div class="text-center mb-5">
+<button type="button" class="btn btn-primary">Primary</button>
+<button type="button" class="btn btn-secondary">Secondary</button>
+<button type="button" class="btn btn-success">Success</button>
+<button type="button" class="btn btn-danger">Danger</button>
+<button type="button" class="btn btn-warning">Warning</button>
+<button type="button" class="btn btn-info">Info</button>
+<button type="button" class="btn btn-light">Light</button>
+<button type="button" class="btn btn-light border">Light Border</button>
+<button type="button" class="btn btn-dark">Dark</button>
+<button type="button" class="btn btn-link">Link</button>
+</div>
+
+<div class="text-center mb-5">
+<button type="button" class="btn btn-outline-primary">Primary</button>
+<button type="button" class="btn btn-outline-secondary">Secondary</button>
+<button type="button" class="btn btn-outline-success">Success</button>
+<button type="button" class="btn btn-outline-danger">Danger</button>
+<button type="button" class="btn btn-outline-warning">Warning</button>
+<button type="button" class="btn btn-outline-info">Info</button>
+<button type="button" class="btn btn-outline-light">Light</button>
+<button type="button" class="btn btn-outline-dark">Dark</button>
+</div>
+
+<div class="text-center mb-5">
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+    Dropdown button
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <li><a class="dropdown-item" href="#">Action</a></li>
+    <li><a class="dropdown-item" href="#">Another action</a></li>
+    <li><a class="dropdown-item" href="#">Something else here</a></li>
+  </ul>
+</div>
+</div>
+
+
+
+<div class="text-center mb-5">
+<button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top">
+  Tooltip on top
+</button>
+<button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="right" title="Tooltip on right">
+  Tooltip on right
+</button>
+<button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Tooltip on bottom">
+  Tooltip on bottom
+</button>
+<button type="button" class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="left" title="Tooltip on left">
+  Tooltip on left
+</button>
+</div>
+
+
+<div class="text-center mb-5">
+<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="top" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+  Popover on top
+</button>
+<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+  Popover on right
+</button>
+<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+  Popover on bottom
+</button>
+<button type="button" class="btn btn-secondary" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="left" data-bs-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+  Popover on left
+</button>
+</div>
+
+
+
+
+
+
+<div class="row mb-5">
+
+<div class="col-6">
+<ul class="list-group">
+  <li class="list-group-item" aria-current="true">Cras justo odio</li>
+  <li class="list-group-item">Dapibus ac facilisis in</li>
+  <li class="list-group-item active">Morbi leo risus</li>
+  <li class="list-group-item">Porta ac consectetur ac</li>
+  <li class="list-group-item disabled">Vestibulum at eros</li>
+</ul>
+</div>
+
+<div class="col-6">
+<div class="list-group">
+  <a href="#" class="list-group-item list-group-item-action" aria-current="true">Cras justo odio</a>
+  <a href="#" class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+  <a href="#" class="list-group-item list-group-item-action active">Morbi leo risus</a>
+  <a href="#" class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+  <a href="#" class="list-group-item list-group-item-action disabled" tabindex="-1" aria-disabled="true">Vestibulum at eros</a>
+</div>
+</div>
+
+</div>
+
+
+<ul class="nav justify-content-center mb-5">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+  </li>
+</ul>
+
+
+<ul class="nav nav-pills nav-fill mb-5" "="">
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Much longer nav link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+  </li>
+</ul>
+
+
+
+<div class="mb-5">
+
+<ul class="nav nav-tabs justify-content-center border-0" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <a class="nav-link h3 active" id="home-tab" data-bs-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link h3" id="profile-tab" data-bs-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+  </li>
+  <li class="nav-item" role="presentation">
+    <a class="nav-link h3" id="contact-tab" data-bs-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+  </li>
+</ul>
+
+<div class="tab-content border border rounded p-3 bg-white" id="myTabContent"><span id="ezoic-pub-ad-placeholder-141" class="ezoic-adpicker-ad"></span><span class="ezoic-ad ezoic-at-0 box-3 box-3141 adtester-container adtester-container-141" data-ez-name="cssscript_com-box-3"><span id="div-gpt-ad-cssscript_com-box-3-0" ezaw="468" ezah="60" style="position:relative;z-index:0;display:inline-block;padding:0;min-height:60px;min-width:468px;" class="ezoic-ad"><script data-ezscrex="false" data-cfasync="false" type="text/javascript" style="display:none;">
+	var cid = '9110299141';
+	var pid = 'ca-pub-2783044520727903';
+	var slotId = 'div-gpt-ad-cssscript_com-box-3-0';
+	var ffid = 1;
+	var alS = 1002 % 1000;
+
+	var container = document.getElementById(slotId);
+	container.style.width = '100%';
+
+	var ins = document.createElement('ins');
+    ins.id = slotId + '-asloaded';
+    ins.className = 'adsbygoogle ezasloaded';
+    ins.dataset.adClient = pid;
+
+	ins.dataset.adChannel = cid;
+
+	if(ffid == 2){
+		ins.dataset.fullWidthResponsive = 'true';
+	}
+
+	ins.style.display = 'block';
+	ins.style.minWidth = container.attributes.ezaw.value + 'px';
+	ins.style.width = '100%';
+	
+	ins.style.height = container.attributes.ezah.value + 'px';
+
+	container.appendChild(ins);
+
+	(adsbygoogle = window.adsbygoogle || []).push({});
+
+	window.ezoSTPixelAdd(slotId, 'stat_source_id', 44);
+	window.ezoSTPixelAdd(slotId, 'adsensetype', 1);
+	
+	var lo = new MutationObserver(window.ezaslEvent);
+    lo.observe(document.getElementById(slotId + '-asloaded'), { attributes: true });
+	</script></span></span>
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</div>
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+</div>
+
+</div>
+
+
+
+
+
+<nav aria-label="Page navigation example" class="mb-5">
+  <ul class="pagination justify-content-center">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item active"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
+
+
+
+<div class="mb-5">
+
+<div class="progress mb-2">
+  <div class="progress-bar progress-bar-striped" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<div class="progress mb-2">
+  <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<div class="progress mb-2">
+  <div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<div class="progress mb-2">
+  <div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<div class="progress mb-2">
+  <div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+
+</div>
+
+
+
+
+<div class="shadow-sm p-3 mb-5 bg-white rounded">Small shadow</div>
+<div class="shadow p-3 mb-5 bg-white rounded">Regular shadow</div>
+<div class="shadow-lg p-3 mb-5 bg-white rounded">Larger shadow</div>
+
+
+
+
+<br/>
+<div class="card p-4 mt-3 mb-4">
+<h4>CARD</h4>
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+</div>
+
+
+
+<div class="modal position-static d-block mb-4" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <span id="ezoic-pub-ad-placeholder-136" class="ezoic-adpicker-ad"></span><span class="ezoic-ad ezoic-at-2 nativedouble-1 nativedouble-1136 adtester-container adtester-container-136" data-ez-name="cssscript_com-nativedouble-1"><div class="OUTBRAIN" data-ob-contenturl="https://www.cssscript.com/demo/dark-mode-bootstrap-5/" data-ob-installation-key="EZOICL9MFJN21JB32NFBE7ODP" data-external-id="14476_1_136_100x480" data-widget-id="AR_1"></div>
+<div data-expand="100" class="ezlazyload" data-script="//widgets.outbrain.com/outbrain.js"></div></span><div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Button trigger modal -->
+<div class="text-center mb-5">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="accordion mb-5" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Accordion Item #1
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>This is the first item&#39;s accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It&#39;s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Accordion Item #2
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>This is the second item&#39;s accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It&#39;s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Accordion Item #3
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>This is the third item&#39;s accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It&#39;s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="card p-4 mb-5">
+<div class="accordion accordion-flush" id="accordionFlushExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="true" aria-controls="flush-collapseOne">
+        Accordion Item #1
+      </button>
+    </h2>
+    <div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven&#39;t heard of them accusamus labore sustainable VHS.</div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+        Accordion Item #2
+      </button>
+    </h2>
+    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven&#39;t heard of them accusamus labore sustainable VHS.</div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+        Accordion Item #3
+      </button>
+    </h2>
+    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven&#39;t heard of them accusamus labore sustainable VHS.</div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+<div class="mb-3">
+  <label for="exampleFormControlInput1" class="form-label">Email address</label>
+  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"/>
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Hello"></textarea>
+</div>
+
+<input class="form-control mb-2" type="text" placeholder="Disabled input" aria-label="Disabled input example" disabled=""/>
+<input class="form-control mb-2" type="text" placeholder="Disabled readonly input" aria-label="Disabled input example" disabled="" readonly=""/>
+<input class="form-control mb-4" type="text" placeholder="Readonly input here..." aria-label="readonly input example" readonly=""/>
+
+
+  <div class="mb-3 row">
+    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+    <div class="col-sm-10">
+      <input type="text" readonly="" class="form-control-plaintext" id="staticEmail" value="email@example.com"/>
+    </div>
+  </div>
+  <div class="mb-3 row">
+    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+    <div class="col-sm-10">
+      <input type="password" class="form-control" id="inputPassword"/>
+    </div>
+  </div>
+
+<div class="mb-3">
+  <label for="formFile" class="form-label">Default file input example</label>
+  <input class="form-control" type="file" id="formFile"/>
+</div>
+<div class="mb-3">
+  <label for="formFileMultiple" class="form-label">Multiple files input example</label>
+  <input class="form-control" type="file" id="formFileMultiple" multiple=""/>
+</div>
+<div class="mb-3">
+  <label for="formFileDisabled" class="form-label">Disabled file input example</label>
+  <input class="form-control" type="file" id="formFileDisabled" disabled=""/>
+</div>
+<div class="mb-3">
+  <label for="formFileSm" class="form-label">Small file input example</label>
+  <input class="form-control form-control-sm" id="formFileSm" type="file"/>
+</div>
+<div>
+  <label for="formFileLg" class="form-label">Large file input example</label>
+  <input class="form-control form-control-lg" id="formFileLg" type="file"/>
+</div>
+
+<label for="exampleColorInput" class="form-label my-4">Color picker</label>
+<input type="color" class="form-control form-control-color" id="exampleColorInput" value="#563d7c" title="Choose your color"/>
+
+<label for="exampleDataList" class="form-label my-4">Datalist example</label>
+<input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search..."/>
+<datalist id="datalistOptions">
+  <option value="San Francisco">
+  </option><option value="New York">
+  </option><option value="Seattle">
+  </option><option value="Los Angeles">
+  </option><option value="Chicago">
+</option></datalist>
+
+<select class="form-select my-4" aria-label="Default select example">
+  <option selected="">Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
+
+
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"/>
+  <label class="form-check-label" for="flexCheckDefault">
+    Default checkbox
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked=""/>
+  <label class="form-check-label" for="flexCheckChecked">
+    Checked checkbox
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled" disabled=""/>
+  <label class="form-check-label" for="flexCheckCheckedDisabled">
+    Disabled checkbox
+  </label>
+</div>
+
+
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked=""/>
+  <label class="form-check-label" for="exampleRadios1">
+    Default radio
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2"/>
+  <label class="form-check-label" for="exampleRadios2">
+    Second default radio
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option3" disabled=""/>
+  <label class="form-check-label" for="exampleRadios3">
+    Disabled radio
+  </label>
+</div>
+
+
+
+<div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"/>
+  <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+</div>
+<div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" id="flexSwitchCheckChecked" checked=""/>
+  <label class="form-check-label" for="flexSwitchCheckChecked">Checked switch checkbox input</label>
+</div>
+<div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDisabled" disabled=""/>
+  <label class="form-check-label" for="flexSwitchCheckDisabled">Disabled switch checkbox input</label>
+</div>
+<div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" id="flexSwitchCheckCheckedDisabled" checked="" disabled=""/>
+  <label class="form-check-label" for="flexSwitchCheckCheckedDisabled">Disabled checked switch checkbox input</label>
+</div>
+
+
+
+<label for="customRange1" class="form-label">Example range</label>
+<input type="range" class="form-range" id="customRange1"/>
+
+
+<label for="disabledRange" class="form-label">Disabled range</label>
+<input type="range" class="form-range" id="disabledRange" disabled=""/>
+
+
+
+<div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">@</span>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1"/>
+</div>
+
+<div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Recipient&#39;s username" aria-label="Recipient&#39;s username" aria-describedby="basic-addon2"/>
+  <span class="input-group-text" id="basic-addon2">@example.com</span>
+</div>
+
+<label for="basic-url" class="form-label">Your vanity URL</label>
+<div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon3">https://example.com/users/</span>
+  <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3"/>
+</div>
+
+<div class="input-group mb-3">
+  <span class="input-group-text">$</span>
+  <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"/>
+  <span class="input-group-text">.00</span>
+</div>
+
+<div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username"/>
+  <span class="input-group-text">@</span>
+  <input type="text" class="form-control" placeholder="Server" aria-label="Server"/>
+</div>
+
+<div class="input-group">
+  <span class="input-group-text">With textarea</span>
+  <textarea class="form-control" aria-label="With textarea"></textarea>
+</div>
+
+
+
+
+
+<div class="form-floating mb-3">
+  <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"/>
+  <label for="floatingInput">Email address</label>
+</div>
+<div class="form-floating">
+  <input type="password" class="form-control" id="floatingPassword" placeholder="Password"/>
+  <label for="floatingPassword">Password</label>
+</div>
+
+<form class="form-floating">
+  <input type="email" class="form-control" id="floatingInputValue" placeholder="name@example.com" value="test@example.com"/>
+  <label for="floatingInputValue">Input with value</label>
+</form>
+
+<form class="form-floating">
+  <input type="email" class="form-control is-invalid" id="floatingInputInvalid" placeholder="name@example.com" value="test@example.com"/>
+  <label for="floatingInputInvalid">Invalid input</label>
+</form>
+
+
+
+<div class="form-floating">
+  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+  <label for="floatingTextarea">Comments</label>
+</div>
+
+<div class="form-floating">
+  <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+  <label for="floatingTextarea2">Comments</label>
+</div>
+
+
+
+
+<div class="form-floating">
+  <select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+    <option selected="">Open this select menu</option>
+    <option value="1">One</option>
+    <option value="2">Two</option>
+    <option value="3">Three</option>
+  </select>
+  <label for="floatingSelect">Works with selects</label>
+</div>
+
+
+
+
+<div class="row g-2">
+  <div class="col-md">
+    <div class="form-floating">
+      <input type="email" class="form-control" id="floatingInputGrid" placeholder="name@example.com" value="mdo@example.com"/>
+      <label for="floatingInputGrid">Email address</label>
+    </div>
+  </div>
+  <div class="col-md">
+    <div class="form-floating">
+      <select class="form-select" id="floatingSelectGrid" aria-label="Floating label select example">
+        <option selected="">Open this select menu</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+      <label for="floatingSelectGrid">Works with selects</label>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<p class="text-center mt-5">Eth Ned</p>
+
+
+</div><!-- /.container -->
+
+<div class="position-fixed py-2 px-3 bg-dark text-white rounded-pill" style="bottom:1rem;left:1rem;">
+<div class="form-check form-switch pull-right">
+  <input class="form-check-input" type="checkbox" id="darkMode"/>
+  <label id="darkModeLabel" for="darkMode">Light</label>
+</div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+<script>
+
+$("a[href='#']").on('click', function(e) {
+  e.preventDefault();
+});
+
+var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+  return new bootstrap.Tooltip(tooltipTriggerEl)
+});
+
+var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+  return new bootstrap.Popover(popoverTriggerEl)
+});
+
+var darkMode = document.getElementById('darkMode');
+
+var darkLabel = "darkModeLabel";
+var darkLang = "Dark";
+var lightLang = "Light";
+
+var imgID = "logo";
+var darkImg = "./dark.png";
+var lightImg = "./light.png";
+
+window.addEventListener('load', function () {
+  if (darkMode) {
+    initTheme();
+    darkMode.addEventListener('change', function () {
+      resetTheme();
+    });
+  }
+});
+
+function initTheme() {
+  var darkThemeSelected = localStorage.getItem('darkMode') !== null && localStorage.getItem('darkMode') === 'dark';
+  darkMode.checked = darkThemeSelected;
+  darkThemeSelected ? document.body.setAttribute('data-theme', 'dark') : document.body.removeAttribute('data-theme');
+  darkThemeSelected ? document.getElementById(imgID).src = darkImg : document.getElementById(imgID).src = lightImg;
+  darkThemeSelected ? document.getElementById(darkLabel).innerHTML = darkLang : document.getElementById(darkLabel).innerHTML = lightLang;
+}
+
+function resetTheme() {
+  if (darkMode.checked) {
+    document.body.setAttribute('data-theme', 'dark');
+    localStorage.setItem('darkMode', 'dark');
+    document.getElementById(imgID).src = darkImg;
+    document.getElementById(darkLabel).innerHTML = darkLang;
+  } else {
+    document.body.removeAttribute('data-theme');
+    localStorage.removeItem('darkMode');
+    document.getElementById(imgID).src = lightImg;
+    document.getElementById(darkLabel).innerHTML = lightLang;
+  }
+}
+</script>
+<script>
+try {
+  fetch(new Request("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", { method: 'HEAD', mode: 'no-cors' })).then(function(response) {
+    return true;
+  }).catch(function(e) {
+    var carbonScript = document.createElement("script");
+    carbonScript.src = "//cdn.carbonads.com/carbon.js?serve=CE7DC2JW&placement=wwwcssscriptcom";
+    carbonScript.id = "_carbonads_js";
+    document.getElementById("carbon-block").appendChild(carbonScript);
+  });
+} catch (error) {
+  console.log(error);
+}
+</script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46156385-1', 'cssscript.com');
+  ga('send', 'pageview');
+
+</script>
+
+
+<script>window.ez_uwa_detect = true;</script>
+<script type="text/javascript">
+				var __inScopeForCCPA = false;
+		function __uspapi(command, version, callback) {
+			var response = null;
+			var successs = false;
+			if (command === "getUSPData" && version === 1) {
+				var uspString = "1"; // Version
+				if (__inScopeForCCPA) {
+					uspString += "Y"; // Has Explicit Notice for Opt Out been provided (ex footer or minor consent modal)
+					var result;
+					var consentCookie = (result = new RegExp('(?:^|; )ezoccpaconsent=([^;]*)').exec(document.cookie)) ? (result[1]) : null;
+					if (consentCookie === "nonconsent") {
+						uspString += "Y";
+					}
+					else {
+						uspString += "N";
+					}
+					uspString += "N" // Is pub a signatory to the IAB Limited Service Provider Agreement (http://www.iabprivacy.com/)
+				}
+				else {
+					uspString += "---";
+				}
+				response = {
+					uspString: uspString,
+					version: 1
+				};
+				success = true;
+			}
+			return callback(response, success);
+		};
+		function __receiveUspapiMessage(event) {
+			if (event.data.hasOwnProperty('__uspapiCall')) {
+				__uspapi('getUSPData', 1, function(uspData, success) {
+					event.source.postMessage({
+						__uspapiReturn: {
+							returnValue: uspData,
+							success: success,
+							callId: event.data.__uspapiCall.callId
+						}
+					},
+					event.origin);
+				});
+			}
+			return null;
+		};
+		window.addEventListener("message", __receiveUspapiMessage, false);
+</script>
+<script>function __ez_fad_ezpbinit(){var s = document.createElement( 'script' );
+	s.setAttribute( 'src', '//go.ezodn.com/hb/dall.js?b=amx,ix,medianet,onemobile,onetag,pubmatic,pulsepoint,rubicon,smilewanted&cb=195-0-45' );
+	s.onerror = function () {window.ezDallErr = true};
+	document.body.appendChild( s );}var ezMedianet={bidder:'medianet',params:{"cid":"8CUBCB617","crid":"188911743"}};var ezSmile={bidder:'smilewanted',params:{zoneId:'ezoic.com_hb_display'}};var ezAMX={bidder:'amx',params:{tagId:'ZXpvaWMuY29t'}};var ezjsps=function(obj){return JSON.parse(JSON.stringify(obj));};var epbjs=epbjs||{};epbjs.que=epbjs.que||[];epbjs.bidderTimeout=2500;epbjs.useAdj=true;epbjs.SS={"amx":11290,"ix":10082,"medianet":11307,"onemobile":11293,"onetag":11291,"pubmatic":10061,"pulsepoint":11301,"rubicon":10063,"smilewanted":11313};epbjs.bidders=['amx,ix,medianet,onemobile,onetag,pubmatic,pulsepoint,rubicon,smilewanted'];epbjs.que.push(function(){});epbjs.bidderSettings={};epbjs.gadj=1.000000;var __enableAnalytics=false;
+var __s2sbidders=['amx','onetag'];
+var __s2sinstreambidders=['ix','medianet','rubicon','pubmatic','vidoomy','viewdeosDX'];
+var __allBidders=['medianet','smilewanted','onemobile','pubmatic','ix','pulsepoint','rubicon','amx','onetag'];
+__ez.queue.addFile('/detroitchicago/houston.js', '/detroitchicago/houston.js?gcb=0&cb=26', false, [], true, false, true, false);__ez.queue.addFunc("epbjsRequestAdUnits", "epbjsRequestAdUnits", [[{code: 'div-gpt-ad-cssscript_com-box-2-0', mediaTypes: {banner: { sizes:[[250,250]] }}, bids: [ezjsps(ezMedianet),ezjsps(ezSmile),{bidder: 'pubmatic', params:{ publisherId: '156983', adSlot: 'e_top_of_page_250x250' }},{bidder: 'pulsepoint', params: { ct: 719184, cf: '250x250', cp: 562406 }},{bidder: 'rubicon', params:{ accountId: '21150', siteId: '351284', zoneId: '1868548' }},ezjsps(ezAMX)] }]], false, ['/detroitchicago/houston.js'], true, true, true, true);var __pd = 'MTA9MTNiYTEyOTU0ZTY0MWUzNDQzMjM0YzE2YzQxYWFlMDI2MjUxYzRjM2EyYTI2MDE2ZTFhYjUxNjAxZGM4NDUzNiYxMj1Nb3ppbGxhJTJGNS4wKyUyOFgxMSUzQitMaW51eCt4ODZfNjQlM0IrcnYlM0E5MS4wJTI5K0dlY2tvJTJGMjAxMDAxMDErRmlyZWZveCUyRjkxLjA=';</script>
+<script>var __ez_tkn_evnt = function() { if(typeof(_ezaq) != 'undefined'){if(typeof window.ezogtk !== "undefined" && window.ezogtk !== "") {__ez.bit.AddAndFire(_ezaq.page_view_id,[new __ezDotData("ext_user_hash",window.ezogtk)]);}}};document.addEventListener("DOMContentLoaded", __ez.queue.addFunc("__ez_tkn_evnt", "__ez_tkn_evnt", event, false, ['/detroitchicago/minneapolis.js','/detroitchicago/memphis.js'], true, true, false, true));</script>
+<script src="/detroitchicago/augusta.js?cb=24" async data-ezscrex="false"></script>
+<script async data-ezscrex="false">__ez_fad_load(0,0);__ez_fad_doc_ht=__ez_fad_docht();__ez_fad_vp_ht=__ez_fad_vpht();function __ez_fad_scroll(){return window.pageYOffset||(document.documentElement||document.body.parentNode||document.body).scrollTop}
+var __ez_fad_init_scroll=__ez_fad_scroll();var __ez_fad_scroll_delta=0;var __ez_fad_check_scroll_override=function(){var currScroll=__ez_fad_scroll();if(__ez_fad_scroll_delta>__ez_fad_vp_ht){if(currScroll===__ez_fad_init_scroll){for(var i=0;i<__ez_fad_divs.length;i++)
+if(ezslit_run[i]!==true){__ez_fad_load(i,null);}}
+document.removeEventListener('wheel',__ez_fad_wheel_check);document.removeEventListener('touchstart',__ez_fad_touch_check);}};var __ez_fad_wheel_check=function(e){__ez_fad_scroll_delta+=e.deltaY;__ez_fad_check_scroll_override();};var __ez_fad_touch_check=function(e){var delta=0;var startY=e.touches[0].pageY;var handleTouchMove=function(e){var currY=e.touches[0].pageY;delta+=startY-currY;startY=currY;};var handleTouchEnd=function(e){document.removeEventListener('touchmove',handleTouchMove);document.removeEventListener('touchend',handleTouchEnd);__ez_fad_scroll_delta+=delta;__ez_fad_check_scroll_override();};document.addEventListener('touchmove',handleTouchMove);document.addEventListener('touchend',handleTouchEnd);};document.addEventListener('wheel',__ez_fad_wheel_check);document.addEventListener('touchstart',__ez_fad_touch_check);var __ez_fad_scrollmond=false;var __ez_fad_scrollmon=function(){var sy=__ez_fad_scroll();var isShortPage=__ez_fad_doc_ht<=(__ez_fad_vh+100);var bot=(__ez_fad_vp_ht+sy);var botThresh=bot+__ez_fad_vp_ht;for(var divid in __ez_fad_divpos){if(__ez_fad_fastdiv.indexOf(divid)!=-1){continue;}
+var divPos=__ez_fad_divpos[divid];if(divPos>0&&divPos>sy&&divPos<(sy+__ez_fad_vp_ht*.5)){if(typeof __ez_fad_instaslots[divid]=='function'){__ez_fad_instaslots[divid]();}}else if(divPos>0&&divPos>sy&&divPos<(sy+__ez_fad_vp_ht)){if(typeof __ez_fad_viewslots[divid]=='function'){__ez_fad_viewslots[divid]();}}}
+__ez_fad_chkpos();if(ezslit_run[0]!==true){__ez_fad_load(0,0);}
+if((sy>0||isShortPage)&&ezslit_run[1]!=true){__ez_fad_load(1,null);__ez_fad_load(5,null);}
+if((sy>100||isShortPage)&&ezslit_run[2]!=true){__ez_fad_load(2,null);}
+if(sy>(__ez_fad_vp_ht*.75)&&ezslit_run[3]!=true){__ez_fad_load(3,null);}
+if(document.readyState==="complete"&&!__ez_fad_floatshowd&&typeof __ez_fad_floating!=='undefined'&&__ez_fad_floating.length>0&&__ez_fad_count===0){setTimeout(googletag.cmd.push(function(){__ez_fad_floatshow()}),500);}
+if((ezslit_run[1]==true&&ezslit_run[2]==true&&ezslit_run[3]==true)||__ez_fad_count===__ez_fad_divsd.length){__ez_fad_scrollmond=true;}else{setTimeout(__ez_fad_scrollmon,500);}};__ez_fad_scrollmon();function __ez_fad_chkpos(){if(typeof __ez_fad_divs[4]!='undefined'){for(var i=0;i<__ez_fad_divs[4].length;i++){var id=__ez_fad_divs[4][i];__ez_fad_divs[4][i]=null;__ez_fad_position([id]);}}}</script>
+
+		<script>setTimeout(function(){googletag.cmd.push(function(){if(ezslot_interstitial==null){return;}
+googletag.display(ezslot_interstitial);googletag.pubads().refresh([ezslot_interstitial]);});},1000);</script>
+<script type="text/javascript" data-cfasync="false"></script>
+<script type="text/javascript" style='display:none;'>var __ez_dims = (function() {
+		var setCookie = function( name, content, expiry ) {
+			return document.cookie = name+'='+content+((expiry)?';expires='+(new Date(Math.floor(new Date().getTime()+expiry*1000)).toUTCString()):'')+';path=/';
+		};
+		var ffid = 1;
+		var oh = window.screen.height;
+		var ow = window.screen.width;
+		var h = ffid === 1 ? oh : (oh > ow) ? oh : ow;
+		var w = ffid === 1 ? ow : (oh > ow) ? ow : oh;
+		var uh = window.innerHeight || document.documentElement.clientHeight || document.getElementsByTagName('body')[0].clientHeight;
+		var uw = window.innerWidth || document.documentElement.clientWidth || document.getElementsByTagName('body')[0].clientWidth;
+		setCookie('ezds', encodeURIComponent('ffid='+ffid+',w='+w+',h='+h), (31536e3*7));
+		setCookie('ezohw', encodeURIComponent('w='+uw+',h='+uh), (31536e3*7));
+	})();</script><script type='text/javascript' style='display:none;' async>
+</script>
+</body></html>
